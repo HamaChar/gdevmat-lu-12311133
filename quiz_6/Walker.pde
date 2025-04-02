@@ -1,7 +1,6 @@
 class Walker
 {
   PVector pos = new PVector();
-  PVector speed = new PVector(10, 10);
   
   int r,g,b,a;
   
