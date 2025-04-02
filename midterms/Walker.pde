@@ -64,9 +64,6 @@ class Walker
     r = _r; g = _g; b = _b; a = _a; fill(r,g,b,a);
     circle(pos.x,pos.y,_size);
     
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
-    
     if (wrap){
     if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
     if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
@@ -77,23 +74,17 @@ class Walker
     r = _r; g = _g; b = _b; a = _a; fill(r,g,b,a);
     circle(pos.x,pos.y,_size);
     
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
   }
   void renderCol(float _size)
   {
     fill(r,g,b,a);
     circle(pos.x,pos.y,_size);
     
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
   }
   void renderCol()
   {
     fill(r,g,b,a);
     circle(pos.x,pos.y, size);
     
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
   }
 }

@@ -20,7 +20,7 @@ void setup()
   float hwx = random(-Window.windowWidth,Window.windowWidth);
   float hwy = random(-Window.windowHeight,Window.windowHeight);
   holeWalker.pos = new PVector(hwx,hwy);
-  holeWalker.setSize(100);
+  holeWalker.setSize(50);
   holeWalker.setCol(255,255,255,255);
   
   for (int i = 0; i < 100; i++)
@@ -73,7 +73,7 @@ void draw()
     for (Walker matter : matterWalkers)
     {
       int randH = ceil(random(360));
-      int randS = ceil(random(15,45));
+      int randS = ceil(random(15,40));
       int randB = ceil(random(80,100));
       int randA = ceil(random(70,100));
       float randSize = random(5,50);
