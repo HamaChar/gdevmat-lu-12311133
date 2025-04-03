@@ -5,22 +5,66 @@ class Walker
   PVector dir = new PVector(0,0); //direction(no magnitude)
   PVector acc = new PVector();
   
+  float maxVelo = 10;
+  float scale = 15;
+  float mass = 1;
+  
   int r,g,b,a;
-  float size;
   
   // constructor
   Walker(){}
-  Walker(PVector _pos, PVector _dir)
+  Walker(PVector _pos)
   {
     this.pos = _pos;
-    this.dir = _dir;
   }
+  
+  void setQuant(float _scale, float _mass)
+  {
+    this.scale = _scale;
+    this.mass = _mass;
+  }
+  
   
   void applyForce(PVector force)
   {
-    this.acc.add(force);
+    PVector f = PVector.div(force, this.mass);
+    this.acc.add(f);
   }
-  
+  void update()
+  {
+    this.velo.normalize(this.dir);
+    this.velo.add(this.acc);
+    this.velo.limit(maxVelo);
+    this.pos.add(this.velo);
+    this.acc.mult(0);
+  }
+  void applyInertia(boolean _flr, boolean _walls, boolean _ceil)
+  {
+    if (_flr)
+    {
+      if (this.pos.y <= Window.bottom)
+      {
+        this.velo.y --;
+        this.velo.y *= -1;
+      }
+    }
+    if (_walls)
+    {
+      if (this.pos.x <= Window.left || this.pos.x >= Window.right)
+      { 
+        this.velo.x *= -1;
+      }
+    }
+    if (_ceil)
+    {
+      if (this.pos.y >= Window.top)
+      {
+        
+        this.velo.y ++;
+        this.velo.y *= -1;
+      }
+    }
+  }
   
   
   
@@ -53,59 +97,70 @@ class Walker
     b = _b;
     a = _a;
   }
-  void setSize(float _size)
+  void setScale(float _scale)
   {
-    size = _size;
+    scale = _scale;
   }
   
   
   // RENDER
-  void render(float _size, boolean wrap)
+  void render(float _scale, boolean wrap)
   {
-    circle(pos.x,pos.y, _size);
+    circle(pos.x,pos.y, _scale);
     if (wrap){
     if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
     if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
     }
   }
-  void render(float _size)
+  void render(float _scale)
   {
-    circle(pos.x,pos.y, _size);
+    circle(pos.x,pos.y, _scale);
+  }
+  void render(boolean wrap)
+  {
+    circle(pos.x,pos.y, scale);
+    if (wrap){
+    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
+    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
+    }
   }
   void render()
   {
-    circle(pos.x,pos.y, size);
+    circle(pos.x,pos.y, scale);
   }
   
-  void renderCol(int _r, int _g, int _b, int _a, float _size, boolean wrap)
+  
+  
+  
+  void renderCol(int _r, int _g, int _b, int _a, float _scale, boolean wrap)
   {
     r = _r; g = _g; b = _b; a = _a; fill(r,g,b,a);
-    circle(pos.x,pos.y,_size);
+    circle(pos.x,pos.y,_scale);
     
     if (wrap){
     if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
     if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
     }
   }
-  void renderCol(int _r, int _g, int _b, int _a, float _size)
+  void renderCol(int _r, int _g, int _b, int _a, float _scale)
   {
     r = _r; g = _g; b = _b; a = _a; fill(r,g,b,a);
-    circle(pos.x,pos.y,_size);
+    circle(pos.x,pos.y,_scale);
   }
-  void renderCol(float _size)
+  void renderCol(float _scale)
   {
     fill(r,g,b,a);
-    circle(pos.x,pos.y,_size);
+    circle(pos.x,pos.y,_scale);
   }
   void renderCol()
   {
     fill(r,g,b,a);
-    circle(pos.x,pos.y, size);
+    circle(pos.x,pos.y, scale);
   }
   void renderCol(boolean wrap)
   {
     fill(r,g,b,a);
-    circle(pos.x,pos.y, size);
+    circle(pos.x,pos.y, scale);
     if (wrap){
     if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
     if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
