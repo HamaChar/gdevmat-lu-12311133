@@ -108,8 +108,8 @@ class Walker
   {
     circle(pos.x,pos.y, _scale);
     if (wrap){
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
+    if (Math.abs(pos.x) >= Window.WindowWidth){pos.x*=-1;}
+    if (Math.abs(pos.y) >= Window.WindowHeight){pos.y*=-1;}
     }
   }
   void render(float _scale)
@@ -120,8 +120,8 @@ class Walker
   {
     circle(pos.x,pos.y, scale);
     if (wrap){
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
+    if (Math.abs(pos.x) >= Window.WindowWidth){pos.x*=-1;}
+    if (Math.abs(pos.y) >= Window.WindowHeight){pos.y*=-1;}
     }
   }
   void render()
@@ -138,8 +138,8 @@ class Walker
     circle(pos.x,pos.y,_scale);
     
     if (wrap){
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
+    if (Math.abs(pos.x) >= Window.WindowWidth){pos.x*=-1;}
+    if (Math.abs(pos.y) >= Window.WindowHeight){pos.y*=-1;}
     }
   }
   void renderCol(int _r, int _g, int _b, int _a, float _scale)
@@ -162,8 +162,8 @@ class Walker
     fill(r,g,b,a);
     circle(pos.x,pos.y, scale);
     if (wrap){
-    if (Math.abs(pos.x) >= Window.windowWidth){pos.x*=-1;}
-    if (Math.abs(pos.y) >= Window.windowHeight){pos.y*=-1;}
+    if (Math.abs(pos.x) >= Window.WindowWidth){pos.x*=-1;}
+    if (Math.abs(pos.y) >= Window.WindowHeight){pos.y*=-1;}
     } //put wrapping
   }
 }
